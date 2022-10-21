@@ -1,14 +1,18 @@
 /*
 Barcode Generator
-(c) 2021 Patricio Díaz 
+(c) 2021 Patricio Díaz
 Adapted from  https://github.com/metafloor/bwip-js to use Express.js
 */
 const express = require("express");
+const morgan = require('morgan')
+
 const bwipjs = require('bwip-js');
 
 const { PNG2JPG } = require("./utils");
 
 const app = express();
+app.use(morgan('tiny'))
+
 app.use(express.static('public'));
 
 // app.get('/live', (req, res) => {
@@ -47,7 +51,7 @@ app.get("/", (req, res) => {
                 .status(500)
                 .contentType('text/plain')
                 .send(`BarcodeGenerator: ${error.message}`);
-        } // if (error) ... 
+        } // if (error) ...
 
         let r0;
         let contentType;

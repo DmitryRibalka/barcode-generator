@@ -7,6 +7,7 @@ WORKDIR /app
 
 COPY index.js .
 COPY package.json .
+COPY utils.js .
 
 RUN npm install
 
